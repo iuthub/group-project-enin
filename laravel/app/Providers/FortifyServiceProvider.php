@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Carbon\Carbon;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -54,7 +55,14 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.reset_password', ["request"=>$request]);
         });
 
-        Fortify::verifyEmailView(function (){
+        Fortify::verifyEmailView(function (Request $request){
+            if ($isModerator=$request->user()->can('allow') ||$request->user()->can('emailVerified')){
+                if ($isModerator)
+                {
+                    $request->user->email_verified_at = Carbon::now();
+                }
+                return redirect('board.board');
+            }
             return view('auth.verify_email');
         });
 

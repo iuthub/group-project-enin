@@ -36,6 +36,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Announcement::class);
     }
 
+    public function checkModerator() {
+        return DB::table('users')->where("id",$this->id)->get();
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -45,6 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
 
     /**
      * The attributes that should be cast to native types.

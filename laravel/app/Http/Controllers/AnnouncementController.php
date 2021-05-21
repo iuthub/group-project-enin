@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class AnnouncementController extends Controller
 {
     private $repo;
-private $repoUser;
+    private $repoUser;
     private $repoCategory;
 
     public function __construct(AnnouncementsRepository $repo, UsersRepository $repoUser, CategoriesRepository $repoCategory)
@@ -28,6 +28,22 @@ private $repoUser;
 
         return view('board.board', ['announcements'=>$announcements, 'users'=>$users, 'categories'=>$categories]);
     }
+
+
+
+
+    public function indexModerator(){
+        $announcements = $this->repo->getAll();
+        $users = $this->repoUser->getAll();
+        $categories = $this->repoCategory->getAll();
+
+        return view('moderator.moderator_page', ['announcements'=>$announcements, 'users'=>$users, 'categories'=>$categories]);
+    }
+
+
+
+
+
 
     public function indexProfile(){
         $announcements = $this->repo->getAll();
@@ -51,7 +67,6 @@ private $repoUser;
             'importance' => 'required',
             'content' => 'required|min:5'
         ]);
-
         $this->repo->add(
             $request->input('title'),
             $request->input('comment'),
@@ -59,7 +74,6 @@ private $repoUser;
             $request->input('importance'),
             $request->input('content')
         );
-
         return response()->redirectToRoute('board.announce')->with('info','Added!');
     }
 }

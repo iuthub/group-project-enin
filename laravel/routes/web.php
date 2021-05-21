@@ -71,3 +71,18 @@ Route::group([
 
 Route::post('/announce', [\App\Http\Controllers\AnnouncementController::class, 'add'])->name('add');
 //Route::get('/board', [\App\Http\Controllers\AnnouncementController::class, 'index'])->name('board.board');
+
+
+
+
+
+
+
+//Route::get('/moderator', function () {
+//    return view('moderator.moderator_page');
+//})->name('moderator');
+
+
+Route::get('/moderator', [\App\Http\Controllers\AnnouncementController::class, 'indexModerator']);
+
+

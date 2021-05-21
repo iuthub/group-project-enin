@@ -6,7 +6,7 @@
             <div class="mb-1 text-muted">{{ $announcement->comment }}</div>
             <p class="card-text mb-auto">{{ $announcement->categories()->get()->map(function ($x){return $x->name;})->join(', ') }}</p>
             <p class="card-text mb-auto">{{ $announcement->content }}</p>
-            <a href="#" class="stretched-link">{{ $announcement->user()->get()->map(function ($x){return $x->username;}) }}</a>
+            <a href="{{ route('profileForeign', ['id'=>$announcement->user_id]) }}" class="stretched-link">{{ $announcement->user()->get()->map(function ($x){return $x->username;}) }}</a>
         </div>
     </div>
 </div>

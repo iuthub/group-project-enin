@@ -14,7 +14,6 @@ class AnnouncementsRepository
         return Announcement::all();
     }
 
-
      public function get($id){
         return Announcement::find($id);
      }

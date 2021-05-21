@@ -39,10 +39,10 @@
             <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-left">
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="{{ \Illuminate\Support\Facades\Auth::user()->firstName }}" disabled>
+                        <input type="text" name="firstName" class="form-control" id="firstName" value="{{ \Illuminate\Support\Facades\Auth::user()->firstName }}" disabled>
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="{{ \Illuminate\Support\Facades\Auth::user()->email }}" disabled>
+                        <input type="email" class="form-control" name="email" id="email" value="{{ \Illuminate\Support\Facades\Auth::user()->email }}" disabled>
                     </div>
                 </div>
                 <div class="form-group mt-3">

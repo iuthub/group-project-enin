@@ -8,19 +8,7 @@
             <h2>Make announcement</h2>
             <p>Everybody would know</p>
 
-            @if(session('info'))
-                <x-alert type="success">
-                    {{ session('info') }}
-                </x-alert>
-            @endif
-
-            @if($errors->any())
-                @foreach($errors->all() as $error)
-                    <x-alert type="danger">
-                        {{ $error }}
-                    </x-alert>
-                @endforeach
-            @endif
+            @include('partials_global.info')
 
             <form action="{{ route('add') }}" method="post" role="form" class="" data-aos="">
                 @csrf
@@ -33,38 +21,73 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="col-md-6 form-group mt-md-0">
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Categories</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="categories[]">
-                                <option>Education</option>
-                                <option>Work</option>
-                                <option>News</option>
-                                <option>Emergency</option>
-                            </select>
+                            <div class="accordion-item bg-dark">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"  aria-expanded="false" data-bs-target="#collapseButton2">
+                                        Categories
+                                    </button>
+                                </h2>
+                                <div class="collapse" id="collapseButton2">
+                                    <div class="accordion-body">
+                                        <ol class="list-unstyled">
+                                            <li> <strong><input class="form-check-input" type="checkbox" value="Education" name="categories[]"> Family</strong> </li>
+                                            <li> <strong><input class="form-check-input" type="checkbox" value="Work" name="categories[]"> Work</strong> </li>
+                                            <li> <strong><input class="form-check-input" type="checkbox" value="News" name="categories[]"> News</strong> </li>
+                                            <li> <strong><input class="form-check-input" type="checkbox" value="Emergency" name="categories[]"> Emergence</strong> </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6 form-group mt-md-0">
                         <div class="form-group mt-3">
-                            <label for="exampleFormControlSelect1">Importance</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="importance">
-                                <option>Very Important</option>
-                                <option>Neutral</option>
-                                <option>Fairly Important</option>
-                            </select>
+                            <div class="accordion-item bg-dark">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"  aria-expanded="false" data-bs-target="#collapseButton1">
+                                        Importance
+                                    </button>
+                                </h2>
+                                <div class="collapse" id="collapseButton1">
+                                    <div class="accordion-body">
+                                        <ol class="list-unstyled">
+                                            <li> <strong>
+                                                <input class="form-check-input" type="radio" name="importance" value="Very Important">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Very Important
+                                                </label>
+                                                </strong>
+                                            </li>
+                                            <li> <strong>
+                                                <input class="form-check-input" type="radio" name="importance" value="Neutral">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Neutral
+                                                </label>
+                                                </strong>
+                                            </li>
+                                            <li> <strong>
+                                                <input class="form-check-input" type="radio" name="importance" value="Fairly Important">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Fairly Important
+                                                </label>
+                                                </strong>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="content" rows="5" placeholder="Your announcement" value="{{ old('content') }}"></textarea>
                 </div>
-
-{{--                <div class="form-group mt-3">--}}
-{{--                    <input type="text" class="form-control" name="user_id" id="user_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}" disabled>--}}
-{{--                </div>--}}
-
                 <div class="my-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>

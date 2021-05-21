@@ -22,7 +22,6 @@
                 active
             @endif
             " href="{{ route('board.profile') }}"> {{ \Illuminate\Support\Facades\Auth::user()->firstName }} {{ \Illuminate\Support\Facades\Auth::user()->lastName }} </a> &nbsp; &nbsp;
-
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <input type="submit" class="nav-link-style-clone" value="Log out">

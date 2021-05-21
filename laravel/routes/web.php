@@ -44,7 +44,7 @@ Route::get('/contact', function () {
 
 
 Route::group([
-    "middleware"=>["auth"]
+    "middleware"=>["auth", "verified"]
 ], function(){
 //    Route::get('/board', function () {
 //        return view('board.board');
@@ -56,14 +56,17 @@ Route::group([
         return view('board.announce');
     })->name('board.announce');
 
+    Route::get('/profile', [\App\Http\Controllers\AnnouncementController::class, 'indexProfile'])->name('board.profile');
+
     Route::get('/contactB', function () {
         return view('board.contact');
     })->name('board.contact');
 
-    Route::get('/profile', function () {
-        return view('board.profile');
-    })->name('board.profile');
+//    Route::get('/profile', function () {
+//        return view('board.profile');
+//    })->name('board.profile');
 
+    Route::get('/profileForeign/{id}', [\App\Http\Controllers\AnnouncementController::class, 'foreign'])->name('profileForeign');
 });
 
 Route::post('/announce', [\App\Http\Controllers\AnnouncementController::class, 'add'])->name('add');

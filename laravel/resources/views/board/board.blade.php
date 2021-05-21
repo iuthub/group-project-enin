@@ -22,35 +22,23 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Announcement</th>
+                        <th>Category</th>
+                        <th>Announcements quantity</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>Alice</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Bob</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>Charlie</td>
-                        <td>7</td>
-                    </tr>
-                    </tbody>
+                    @foreach($categories as $category)
+                        <x-category :category="$category"></x-category>
+                    @endforeach
                     <tfoot>
                     <tr>
                         <td>Totals</td>
-                        <td>21</td>
+                        <td>{{ $announcements->count() }}</td>
                     </tr>
                     </tfoot>
                 </table>
 
                 <nav class="blog-pagination" aria-label="Pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+                    <a class="btn btn-outline-primary" href="#">Top</a>
                 </nav>
 
             </div>
@@ -60,20 +48,13 @@
                     <div class="p-4">
                         <p class="lead">Users</p>
                         <ol class="list-unstyled mb-0">
-                            <li><a href="#">User 1</a></li>
-                            <li><a href="#">User 2</a></li>
-                            <li><a href="#">January 2021</a></li>
-                            <li><a href="#">December 2020</a></li>
-                            <li><a href="#">November 2020</a></li>
-                            <li><a href="#">October 2020</a></li>
-                            <li><a href="#">September 2020</a></li>
-                            <li><a href="#">August 2020</a></li>
-                            <li><a href="#">July 2020</a></li>
-                            <li><a href="#">June 2020</a></li>
-                            <li><a href="#">May 2020</a></li>
-                            <li><a href="#">April 2020</a></li>
+                            @foreach($users as $user)
+                                <x-user :user="$user"></x-user>
+                            @endforeach
                         </ol>
                     </div>
+
+
 
                     <div class="p-4">
                         <p class="lead">Moderators</p>
@@ -86,7 +67,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
 @endsection

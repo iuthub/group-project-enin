@@ -34,10 +34,9 @@
                                 <div class="collapse" id="collapseButton2">
                                     <div class="accordion-body">
                                         <ol class="list-unstyled">
-                                            <li> <strong><input class="form-check-input" type="checkbox" value="Education" name="categories[]"> Family</strong> </li>
-                                            <li> <strong><input class="form-check-input" type="checkbox" value="Work" name="categories[]"> Work</strong> </li>
-                                            <li> <strong><input class="form-check-input" type="checkbox" value="News" name="categories[]"> News</strong> </li>
-                                            <li> <strong><input class="form-check-input" type="checkbox" value="Emergency" name="categories[]"> Emergence</strong> </li>
+                                            @foreach($categories as $category)
+                                            <li> <strong><input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]">{{$category->name}}</strong> </li>
+                                            @endforeach
                                         </ol>
                                     </div>
                                 </div>

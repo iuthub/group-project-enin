@@ -32,7 +32,7 @@
                                     <li> <strong>Category: </strong> {{ $announcement->categories()->get()->map(function ($x){return $x->name;})->join(', ') }} </li>
                                     <li> <strong>Importance: </strong> {{ $announcement->importance }} </li>
                                 </ol>
-                                {{ $announcement->content }}
+                                {{$announcement->content}}
                             </div>
                         </div>
                     </div>

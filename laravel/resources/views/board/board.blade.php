@@ -4,9 +4,9 @@
     @include('board.partials_board.nav_bar_board')
 
     <main class="container mt-3">
-        <div class="row mb-2">
+        <div class="row mb-2" id="main_announcment_container">
             @foreach($announcements as $announcement)
-                <x-announcement :announcement="$announcement"></x-announcement>
+                <x-announcement :announcement="$announcement" token="{{\Illuminate\Support\Facades\Auth::user()->auth_token}}"></x-announcement>
             @endforeach
         </div>
 

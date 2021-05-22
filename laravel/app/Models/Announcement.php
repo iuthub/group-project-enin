@@ -16,7 +16,8 @@ class Announcement extends Model
         'category',
         'importance',
         'content',
-        'user_id'
+        'user_id',
+        'order'
     ];
 
     public function user()

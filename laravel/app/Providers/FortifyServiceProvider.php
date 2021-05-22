@@ -6,8 +6,12 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+
+use App\Policies\AuthPolicy;
+use Gate;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
@@ -20,9 +24,15 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $policies = [
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+//        User::class => AuthPolicy::class,
+    ];
+
     public function register()
     {
-        //
+        Gate::define('isModerator', [AuthPolicy::class, 'isModerator']);
+        Gate::define('isVerified', [AuthPolicy::class, 'isVerified']);
     }
 
     /**
@@ -39,7 +49,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
 
 
-        Fortify::registerView(function (){
+            Fortify::registerView(function (){
             return view('auth.register');
         });
 
@@ -56,12 +66,15 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::verifyEmailView(function (Request $request){
-            if ($isModerator=$request->user()->can('allow') ||$request->user()->can('emailVerified')){
+            $isModerator =   Gate::check('isModerator');
+            $isVerified = Gate::check('isVerified');
+            if ($isModerator || $isVerified){
                 if ($isModerator)
                 {
-                    $request->user->email_verified_at = Carbon::now();
+                    $request->user()->email_verified_at = Carbon::now();
+                    $request->user()->save();
                 }
-                return redirect('board.board');
+                return redirect(route('board.board'));
             }
             return view('auth.verify_email');
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,6 @@ Route::get('/index', function () {
 })->name('fffff');
 
 
-
-
-
 Route::get('/', function () {
     return view('landing.home');
 })->name('landing.home');
@@ -42,21 +40,19 @@ Route::get('/contact', function () {
 })->name('landing.contact');
 
 
-
 Route::group([
-    "middleware"=>["auth", "verified"]
-], function(){
+    "middleware" => ["auth", "verified"]
+], function () {
 //    Route::get('/board', function () {
 //        return view('board.board');
 //    })->name('board.board');
 
-    Route::get('/board', [\App\Http\Controllers\AnnouncementController::class, 'index'])->name('board.board');
+    Route::get('/board', [AnnouncementController::class, 'index'])->name('board.board');
 
-    Route::get('/announce', function () {
-        return view('board.announce');
-    })->name('board.announce');
 
-    Route::get('/profile', [\App\Http\Controllers\AnnouncementController::class, 'indexProfile'])->name('board.profile');
+    Route::get('/announce', [AnnouncementController::class, 'announcement'])->name('board.announce');
+
+    Route::get('/profile', [AnnouncementController::class, 'indexProfile'])->name('board.profile');
 
     Route::get('/contactB', function () {
         return view('board.contact');
@@ -66,16 +62,11 @@ Route::group([
 //        return view('board.profile');
 //    })->name('board.profile');
 
-    Route::get('/profileForeign/{id}', [\App\Http\Controllers\AnnouncementController::class, 'foreign'])->name('profileForeign');
+    Route::get('/profileForeign/{id}', [AnnouncementController::class, 'foreign'])->name('profileForeign');
 });
 
-Route::post('/announce', [\App\Http\Controllers\AnnouncementController::class, 'add'])->name('add');
+Route::post('/announce', [AnnouncementController::class, 'add'])->name('add');
 //Route::get('/board', [\App\Http\Controllers\AnnouncementController::class, 'index'])->name('board.board');
-
-
-
-
-
 
 
 //Route::get('/moderator', function () {
@@ -83,6 +74,6 @@ Route::post('/announce', [\App\Http\Controllers\AnnouncementController::class, '
 //})->name('moderator');
 
 
-Route::get('/moderator', [\App\Http\Controllers\AnnouncementController::class, 'indexModerator']);
+Route::get('/moderator', [AnnouncementController::class, 'indexModerator']);
 
 

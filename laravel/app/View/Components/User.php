@@ -28,4 +28,5 @@ class User extends Component
     {
         return view('components.user');
     }
+
 }

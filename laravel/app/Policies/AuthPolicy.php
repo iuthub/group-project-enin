@@ -18,11 +18,14 @@ class AuthPolicy
     {
         //
     }
-    public function allow(User $user)
+
+    public function isModerator(User $user)
     {
-        return $user->checkModerator()!=null;
+        return $user->checkModerator() != null;
     }
-    public function emailVerified(User $user){
+
+    public function isVerified(User $user){
+
         return $user->email_verified_at != null;
     }
 }

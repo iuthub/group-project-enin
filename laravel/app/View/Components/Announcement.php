@@ -13,9 +13,11 @@ class Announcement extends Component
      */
 
     public $announcement;
-    public function __construct($announcement)
+    public $token;
+    public function __construct($announcement ,$token)
     {
         $this->announcement = $announcement;
+        $this->token = $token;
     }
 
     /**

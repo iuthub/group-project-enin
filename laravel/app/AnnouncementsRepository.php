@@ -13,15 +13,32 @@ use Illuminate\Support\Facades\Auth;
 class AnnouncementsRepository
 {
     public function getAll(){
-       $user= Auth::user();
+        $user= Auth::user();
         return Announcement::when(
             $user ->cannot('isModerator'),
             function ($query) use($user){
-               return $query->where("is_approved", true)->OrWhere("user_id", $user->id);
+                return $query->where("is_approved", true)->OrWhere("user_id", $user->id);
             }
         )->orderBy('order', 'DESC')->get();
     }
-
+    public function search($search){
+        $user= Auth::user();
+        return Announcement::where('title','LIKE', '%'.$search.'%')->when(
+            $user ->cannot('isModerator'),
+            function ($query) use($user){
+                return $query->where("is_approved", true)->OrWhere("user_id", $user->id);
+            }
+        )->orderBy('order', 'DESC')->get();
+    }
+    public function sort($sort){
+        $user= Auth::user();
+        return Announcement::when(
+            $user ->cannot('isModerator'),
+            function ($query) use($user){
+                return $query->where("is_approved", true)->OrWhere("user_id", $user->id);
+            }
+        )->orderBy('order', $sort)->get();
+    }
      public function get($id){
         return Announcement::find($id);
      }

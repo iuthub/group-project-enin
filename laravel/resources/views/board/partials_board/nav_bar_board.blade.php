@@ -43,7 +43,7 @@
                 <div class="col-md-3 text-end px-2 link-dark col-12 col-md-auto mb-2 justify-content-center mb-md-0 logout-btn" style="margin-bottom: 30px !important; margin-left: -240px">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
-                        <input type="submit" class="btn button-logout nav-masthead justify-content-center float-md-end" value="Log out" style="">
+                        <input id="log_out" type="submit" class="btn button-logout nav-masthead justify-content-center float-md-end" value="Log out" style="">
                     </form>
                 </div>
 

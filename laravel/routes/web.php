@@ -36,9 +36,7 @@ Route::get('/features', function () {
     return view('landing.features');
 })->name('landing.features');
 
-Route::get('/contact', function () {
-    return view('landing.contact');
-})->name('landing.contact');
+Route::match(['get','post'],'/contact',[ContactController::class, 'landingContact'])->name('landing.contact');
 
 
 Route::group([
@@ -62,6 +60,7 @@ Route::group([
 //    })->name('board.profile');
 
     Route::get('/profileForeign/{id}', [AnnouncementController::class, 'foreign'])->name('profileForeign');
+    Route::post('/profileForeign/{id}', [AnnouncementController::class, 'foreign'])->name('profileForeign');
 });
 
 Route::post('/announce', [AnnouncementController::class, 'add'])->name('add');

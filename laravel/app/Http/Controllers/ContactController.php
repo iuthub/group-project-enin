@@ -23,11 +23,21 @@ class ContactController extends Controller
         $this->repoCategory = $repoCategory;
     }
 
+    public function landingContact(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            return $this->postContact($request);
+        }
+
+        return view('landing.contact');
+    }
+
     public function contactUs(Request $request)
     {
 
         if ($request->isMethod('post')) {
-            return  $this->postContact($request);
+            return $this->postContact($request);
         }
 
         return view('board.contact');
@@ -36,8 +46,8 @@ class ContactController extends Controller
     private function postContact($request)
     {
         $request->validate([
-            'subject'=>'required',
-            'message'=>'required',
+            'subject' => 'required',
+            'message' => 'required',
         ]);
         $subject = $request->subject;
         $body = $request->message;

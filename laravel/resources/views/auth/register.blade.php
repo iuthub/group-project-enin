@@ -67,7 +67,7 @@
                         <label for="Phone number" class="form-label">Phone number</label>
                         <input type="text" class="form-control" id="Phone number" name="phoneNumber" value="{{old('phoneNumber')}}" placeholder="+9989" >
                         @error('phoneNumber')
-                        <div class="alert-danger"> {{ $message }}</div>
+                        <div class="alert-danger">Phone has to be in format +998-91-1669982</div>
                         @enderror
                     </div>
 

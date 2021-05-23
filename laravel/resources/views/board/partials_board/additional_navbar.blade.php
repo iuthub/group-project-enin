@@ -13,7 +13,7 @@
                         <div class="block-grid">
                             <div class="search_block">
                                <div class="input">
-                                   <form method='GET'>
+                                   <form method='GET' >
                                        <input type='text' name="search" placeholder="search..." required/>
                                        <span>
                                 <button class="delete delete-btn" style="" type='submit'>
@@ -29,19 +29,21 @@
                     </li>
                     <li>
                         <div class="dropdown">
-                            <a type="button" class="dropdown  dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #6c757d">
-{{--                                dropdown-toggle--}}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-filter-square-fill" viewBox="0 0 16 16">
                                     <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm.5 5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1 0-1zM4 8.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm2 3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/>
                                 </svg>
                                 <div class="dropdown-list" aria-labelledby="bd-versions">
                                     <a class="dropdown-item" href="#">
-                                        Filter-2
+                                        {{$sort}}
                                     </a>
-                                    <div class="dropdown-divider">фывфыв</div>
-                                    <a class="dropdown-item" href="#">Filter-3</a>
-                                    <a class="dropdown-item" href="#">Filter-4</a>
-                                    <a class="dropdown-item" href="#">Filter-5</a>
+                                    <form method="GET">
+                                        <input value="0" style="display:none;">
+                                        <a class="dropdown-item" href="/board?sort=0">ASC</a>
+                                    </form>
+                                    <form method="GET">
+                                        <input value="1" style="display:none;">
+                                        <a class="dropdown-item" href="/board?sort=1">DESC</a>
+                                    </form>
                                 </div>
                         </div>
                     </li>

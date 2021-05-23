@@ -15,8 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{asset("css/landing_page_style.css")}}" rel="stylesheet">
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">

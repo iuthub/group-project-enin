@@ -6,6 +6,7 @@ namespace App;
 
 use App\Models\User;
 use App\Notifications\ContactUs;
+use Illuminate\Support\Facades\Auth;
 
 class UsersRepository
 {
@@ -23,5 +24,10 @@ class UsersRepository
     {
         $moderator = User::getModerator();
         $moderator->notify($contactUs);
+    }
+    public function updateUser($user_id, $fields){
+        $user = User::find($user_id);
+        $user->update($fields);
+        $user->save();
     }
 }

@@ -11,10 +11,11 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset("bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/landing_page_style.css" rel="stylesheet">
+    <link href="{{asset("css/landing_page_style.css")}}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">

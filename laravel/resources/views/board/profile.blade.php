@@ -79,23 +79,23 @@
                             <div class="col-sm-6">
                                 <label for="passport" class="form-label">Passport Number</label>
 
-                                <input type="text" class="form-control" id="passport" value="{{ \Illuminate\Support\Facades\Auth::user()->passport }}" required>
+                                <input type="text" class="form-control" id="passport" value="{{ \Illuminate\Support\Facades\Auth::user()->passport }}" disabled>
 
                             </div>
                             <div class="col-sm-6">
                                 <label for="City" class="form-label">City</label>
-                                <input type="text" class="form-control" id="City" value="{{\Illuminate\Support\Facades\Auth::user()->city}}" required>
+                                <input type="text" class="form-control" id="City" value="{{\Illuminate\Support\Facades\Auth::user()->city}}" disabled>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="postal code" class="form-label">Postal Code</label>
 
-                                <input type="text" class="form-control" id="postal code" value="{{\Illuminate\Support\Facades\Auth::user()->postalCode}}" required>
+                                <input type="text" class="form-control" id="postal code" value="{{\Illuminate\Support\Facades\Auth::user()->postalCode}}" disabled>
                             </div>
                         </div>
 
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Edit</button>
+{{--                        <button class="w-100 btn btn-primary btn-lg" type="submit">Edit</button>--}}
 
                     </form>
                 </div>

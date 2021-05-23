@@ -23,12 +23,12 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', Rule::unique(User::class),],
-            'phoneNumber' => ['required', 'string', 'max:255', Rule::unique(User::class),],
-            'birthdate' => ['required', 'string', 'max:255'],
-            'passport' => ['required', 'string', 'max:255', Rule::unique(User::class),],
-            'city' => ['required', 'string', 'max:255'],
-            'postalCode' => ['required', 'string', 'max:255'],
+            'birthdate' => ['required', 'string', 'max:255' , 'date_format:d-m-Y'],
+            'city' => ['required','regex:/^[a-zA-Z]+$/'],
+            'postalCode' =>['required','number','min:7','max:7'],
+            'username' => ['required','string', 'min:5', Rule::unique(User::class),],
+            'phoneNumber' => [ 'required','string','regex:/\+998-[0-9]{2}-[0-9]{7}$/', Rule::unique(User::class),],
+            'passport' => ['required' ,'string', 'regex:/^[A-B]{2}[0-9]{7}/', Rule::unique(User::class),],
             'email' => [
                 'required',
                 'string',

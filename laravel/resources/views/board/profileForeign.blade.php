@@ -2,12 +2,19 @@
 
     @section('content')
     @include('board.partials_board.nav_bar_board')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 <div class="Section Title">
     <h2> Profile {{ $foreignUser->firstName }} {{ $foreignUser->lastName }}</h2>
     <p class="lead">I don't know there will be information</p>
 </div>
-
+    @if(\Illuminate\Support\Facades\Auth::user()->cannot('isModerator'))
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input').attr('disabled', 'disabled');
+            $('#log_out').removeAttr('disabled');
+        });
+    </script>
+    @endif
 <div class="container">
     <main>
         <hr class="my-4">
@@ -44,54 +51,118 @@
             {{-- The end of info about Announcements --}}
 
             <div class="col-md-7 col-lg-6">
-                <form class="needs-validation" novalidate>
+                <form method="post" class="needs-validation" >
+                    @csrf
                     <div class="row g-3">
 
                         <div class="col-12">
                             <label for="username" class="form-label">Username</label>
                             <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="username" value="{{ $foreignUser->username }}" disabled>
+                                <input type="text" name="username" class="form-control" id="username" value="{{ $foreignUser->username }}" required >
+                                @error('username')
+                                <div class="alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="col-12">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" value="{{ $foreignUser->email }}" disabled>
+                            <input type="email" name="email" class="form-control" id="email" value="{{ $foreignUser->email }}"  required>
+                            @error('email')
+                            <div class="alert-danger"> {{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-12">
                             <label for="address" class="form-label">Phone Number</label>
-                            <input type="text" class="form-control" id="address" value="{{ $foreignUser->phoneNumber }}" disabled>
+                            <input type="text" name="phoneNumber" class="form-control" id="address" value="{{ $foreignUser->phoneNumber }}"  required>
+                            @error('phoneNumber')
+                            <div class="alert-danger">Phone has to be in format: +998-91-1669982</div>
+                            @enderror
                         </div>
 
                         <div class="col-sm-6">
                             <label for="birthdate" class="form-label">Date of Birth </label>
-                            <input type="text" class="form-control" id="birthdate" value="{{ $foreignUser->birthdate }}" disabled>
+                            <input type="text" name="birthdate" class="form-control" id="birthdate" value="{{ $foreignUser->birthdate }}"  required>
+                            @error('birthdate')
+                            <div class="alert-danger"> {{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-sm-6">
                             <label for="passport" class="form-label">Passport Number</label>
-                            <input type="text" class="form-control" id="passport" value="{{ $foreignUser->passportNumber }}" disabled>
+                            <input type="text" name="passport" class="form-control" id="passport" value="{{ $foreignUser->passport }}" required >
+                            @error('passport')
+                            <div class="alert-danger"> {{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-sm-6">
                             <label for="City" class="form-label">City</label>
-                            <input type="text" class="form-control" id="City" value="{{ $foreignUser->city }}" disabled>
+                            <input type="text" name="city" class="form-control" id="city" value="{{ $foreignUser->city }}" required >
+                            @error('city')
+                            <div class="alert-danger"> {{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-sm-6">
                             <label for="postal code" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="postal code" value="{{ $foreignUser->postalCode }}" disabled>
+                            <input type="text" name="postalCode" class="form-control" id="postalCode" value="{{ $foreignUser->postalCode }}" required>
+                            @error('postalCode')
+                            <div class="alert-danger"> {{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-
                     <hr class="my-4">
-                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                    @if(\Illuminate\Support\Facades\Auth::user()->can('isModerator'))
+
+                    <input type="submit" id="input_submit" style="display: none"/>
+                    <button class="w-100 btn btn-primary btn-lg" id="submit_button" type="button">Edit</button>
+                    @endif
                 </form>
             </div>
         </div>
     </main>
 
 </div>
+
+        <script>
+            $("#submit_button").click(function (){
+                let email = $('#email');
+                let passport = $('#passport');
+                let city = $('#city');
+                let postCode = $("#postalCode");
+                let checkSubmit = true;
+                let postCode_pattern = /^([a-zA-Z]){1}([0-9][0-9]|[0-9]|[a-zA-Z][0-9][a-zA-Z]|[a-zA-Z][0-9][0-9]|[a-zA-Z][0-9]){1}([        ])([0-9][a-zA-z][a-zA-z]){1}$/i;
+                let passport_pattern = /^[A-Z][0-9]{8}$/i;
+                let email_pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+                let city_pattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/i;
+                checkSubmit = checkInpit(email_pattern, email);
+                console.log(`email ${checkSubmit}`);
+                // checkSubmit = checkSubmit ? checkInpit(passport_pattern, passport): checkSubmit;
+                console.log(`passport ${checkSubmit}`);
+                // checkSubmit = checkSubmit ? checkInpit(city_pattern, city): checkSubmit;
+                console.log(`city ${checkSubmit}`);
+                // checkSubmit = checkSubmit ? checkInpit(postCode_pattern, postCode): checkSubmit;
+                if (checkSubmit) {
+                    $('#input_submit').click();
+                }
+                else {
+                    alert('please fix errors');
+                }
+            });
+
+            function checkInpit(pattern, input) {
+                if(!pattern.test(input.val())){
+                    input.addClass('alert-danger');
+                    return false;
+                }
+                else {
+                    input.removeClass('alert-danger');
+                    return true;
+                }
+            }
+
+        </script>
 
 @endsection

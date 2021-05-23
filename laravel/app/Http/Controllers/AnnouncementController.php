@@ -87,7 +87,7 @@ class   AnnouncementController extends Controller
             'phoneNumber' => ['string', 'regex:/\+998-[0-9]{2}-[0-9]{7}$/', Rule::unique(User::class),],
             'passport' => ['string', 'regex:/^[A-B]{2}[0-9]{7}/', Rule::unique(User::class),],
             'birthdate' => ['date_format:d-m-Y'],
-            'postalCode' => ['min:7', 'max:7'],
+            'postalCode' => ['numeric', 'digits:7'],
             'city' => ['regex:/^[a-zA-Z]+$/'],
             'email' => [
                 'required',

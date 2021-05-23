@@ -29,7 +29,7 @@
         <div class="" href="#">
             <img class="mainpagelogo" src="{{ asset('img/mainpagelogo.png') }}" alt="enin" style="">
         </div>
-        <p class="lead text-center"">There will be information, may be even even dynamic ones, like information about the announcements, like quantities agaga</p>
+        <p class="lead text-center h2">Informing employees of good news is fun and with “enin” you can capture that excitement visually. Design announcement card with our announcement maker.</p>
         <p class="lead w-60">
             <a href="{{route('board.board')}}" class="btn btn-lg fw-bold bg-black button">go inside!</a>
         </p>

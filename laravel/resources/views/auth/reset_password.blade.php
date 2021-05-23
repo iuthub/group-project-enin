@@ -28,9 +28,9 @@
                 <div class="alert-danger"> {{ $message }}</div>
                 @enderror
             </div>
-
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
             <a href="{{ route('login') }}">Login</a>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Update</button>
+
         </form>
     </main>
 @endsection

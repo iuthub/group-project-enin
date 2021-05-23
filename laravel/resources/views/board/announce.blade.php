@@ -2,9 +2,6 @@
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
-    <style>
-
-    </style>
     <div>
 
         <div class="section-title announce">

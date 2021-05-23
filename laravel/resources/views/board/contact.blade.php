@@ -4,7 +4,7 @@
     @include('board.partials_board.nav_bar_board')
     <style>
     </style>
-    <div>
+    <div class="contact">
 
         <div class="section-title">
             <h2 style="color: #22863a">Contact</h2>

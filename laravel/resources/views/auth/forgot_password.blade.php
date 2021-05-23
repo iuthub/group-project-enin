@@ -1,7 +1,7 @@
 @extends('auth.master_auth')
 
 @section('content')
-    <main class="form-signin">
+    <main class="form-signin " >
         <form action="{{ route('password.email') }}" method="post">
             @csrf
             {{--        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">--}}

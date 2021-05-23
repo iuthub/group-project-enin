@@ -1,5 +1,5 @@
 @extends('auth.master_auth')
-
+{{--@extends()--}}
 @section('content')
     <main class="form-signin">
         <form action="{{ route('verification.send') }}" method="post">

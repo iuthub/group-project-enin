@@ -14,7 +14,7 @@
                 <div class="address">
                     <i class="bi bi-geo-alt"></i>
                     <h4>Location:</h4>
-                    <p>A108 Adam Street,<br>New York, NY 535022</p>
+                    <p>Mirzo-Ulugbek,<br>Tashkent</p>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <div class="email">
                     <i class="bi bi-envelope"></i>
                     <h4>Email:</h4>
-                    <p>info@example.com</p>
+                    <p>enin@enin.online</p>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                 <div class="phone">
                     <i class="bi bi-phone"></i>
                     <h4>Call:</h4>
-                    <p>+1 5589 55488 55s</p>
+                    <p>+998909988409</p>
                 </div>
             </div>
         </div>
@@ -52,9 +52,9 @@
                     <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                 </div>
                 <div class="my-3">
-                    <div class="loading">Loading</div>
+{{--                    <div class="loading">Loading</div>--}}
                     <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+{{--                    <div class="sent-message">Your message has been sent. Thank you!</div>--}}
                 </div>
                 <div class="text-center"><a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Send Message</a></div>
             </form>

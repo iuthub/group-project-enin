@@ -3,8 +3,6 @@
 
 <div class="container">
     <main>
-
-
         <div class="py-3 text-center">
             <h2>Please Register</h2>
             <p class="lead">I don't know there will be information</p>

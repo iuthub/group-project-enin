@@ -1,10 +1,8 @@
 @extends('board.master_board')
-
 @section('content')
     @include('board.partials_board.nav_bar_board')
     @include('board.partials_board.additional_navbar')
     <div class="btn-group">
-
         <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
@@ -15,19 +13,15 @@
     </div>
     <main class="container mt-3">
         <div class="row mb-2" id="main_announcment_container">
-
             @foreach($announcements as $announcement)
                 <x-announcement :announcement="$announcement" token="{{\Illuminate\Support\Facades\Auth::user()->auth_token}}"></x-announcement>
             @endforeach
         </div>
-
         <div class="row g-5">
             <div class="col-md-8">
                 <h3 class="pb-4 mb-4 border-bottom">
                     From the Firehose
                 </h3>
-
-
                 <h3>Example table</h3>
                 <p>And don't forget about tables in these posts:</p>
                 <table class="table">
@@ -47,14 +41,10 @@
                     </tr>
                     </tfoot>
                 </table>
-
                 <nav class="blog-pagination" aria-label="Pagination">
                     <a class="btn btn-outline-primary" href="#">Top</a>
                 </nav>
-
             </div>
-
-
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="p-4">
@@ -77,5 +67,4 @@
             </div>
         </div>
     </main>
-
 @endsection

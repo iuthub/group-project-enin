@@ -1,23 +1,12 @@
-@extends('board.master_board')
+@extends('moderator.master_moderator')
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
-    @include('board.partials_board.additional_navbar')
-    <div class="btn-group">
 
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-        </div>
-    </div>
     <main class="container mt-3">
-        <div class="row mb-2" id="main_announcment_container">
-
+        <div class="row mb-2">
             @foreach($announcements as $announcement)
-                <x-announcement :announcement="$announcement" token="{{\Illuminate\Support\Facades\Auth::user()->auth_token}}"></x-announcement>
+                <x-announcement :announcement="$announcement"></x-announcement>
             @endforeach
         </div>
 
@@ -54,7 +43,6 @@
 
             </div>
 
-
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="p-4">
@@ -65,6 +53,7 @@
                             @endforeach
                         </ol>
                     </div>
+
                     <div class="p-4">
                         <p class="lead">Moderators</p>
                         <ol class="list-unstyled">

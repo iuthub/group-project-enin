@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Announcement extends Component
+class Category extends Component
 {
     /**
      * Create a new component instance.
@@ -12,12 +12,10 @@ class Announcement extends Component
      * @return void
      */
 
-    public $announcement;
-    public $token;
-    public function __construct($announcement ,$token)
+    public $category;
+    public function __construct($category)
     {
-        $this->announcement = $announcement;
-        $this->token = $token;
+        $this->category = $category;
     }
 
     /**
@@ -27,6 +25,6 @@ class Announcement extends Component
      */
     public function render()
     {
-        return view('components.announcement');
+        return view('components.category');
     }
 }

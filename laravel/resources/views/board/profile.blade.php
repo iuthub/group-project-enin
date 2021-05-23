@@ -2,11 +2,10 @@
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div class="Section Title">
+        <h2 style="color: #22863a">Your profile</h2>
 
-    <div class="Section_Title green-text">
-        <h2 class="green-text">
-            <span class="text-center" style="color: #22863a">Your profile</span>
-        </h2>
         <p class="lead">I don't know there will be information</p>
     </div>
 
@@ -20,125 +19,84 @@
                         <span class="text-center " style="color: #22863a">Your Announcement</span>
                     </h4>
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item bg-dark align-content-lg-start">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Title of Announcement
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ol class="list-unstyled">
-                                        <li> <strong >Your comment: </strong> </li>
-                                        <li> <strong>Category: </strong> </li>
-                                        <li> <strong>Importance: </strong> </li>
-                                    </ol>
-                                    It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.
+                        @foreach($usersAnnouncement as $announcement)
+                            <div class="accordion-item bg-dark">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"  aria-expanded="false" data-bs-target="#collapseButton_{{$loop->index}}" >
+                                        {{ $announcement->title }}
+                                    </button>
+                                </h2>
+                                <div class="collapse" id="collapseButton_{{$loop->index}}">
+                                    <div class="accordion-body">
+                                        <ol class="list-unstyled">
+                                            <li> <strong >Your comment: </strong> {{ $announcement->comment }} </li>
+                                            <li> <strong>Category: </strong> {{ $announcement->categories()->get()->map(function ($x){return $x->name;})->join(', ') }} </li>
+                                            <li> <strong>Importance: </strong> {{ $announcement->importance }} </li>
+                                        </ol>
+                                        {{ $announcement->content }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="accordion-item bg-dark">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Title of Announcement
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ol class="list-unstyled">
-                                        <li> <strong>Your comment: </strong> </li>
-                                        <li> <strong>Category: </strong> </li>
-                                        <li> <strong>Importance: </strong> </li>
-                                    </ol>
-                                    It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    <p class="d-flex justify-content-between align-items-center mb-3">Total Number: 0</p>
-                </div>
-                {{-- The end of info about Announcements --}}
+                    <p class="d-flex justify-content-between align-items-center mb-3">Total Number: {{ $usersAnnouncement->count() }}</p>
+                        </div>
 
+                {{-- The end of info about Announcements --}}
                 <div class="col-md-7 col-lg-6">
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="firstName" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="FirstName" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid first name is required.
-                                </div>
-                            </div>
+                                <input type="text" class="form-control" id="firstName" value="{{ \Illuminate\Support\Facades\Auth::user()->firstName}}" disabled>
 
+                            </div>
                             <div class="col-sm-6">
                                 <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="LastName" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid last name is required.
-                                </div>
+                                <input type="text" class="form-control" id="lastName" value="{{\Illuminate\Support\Facades\Auth::user()->lastName}}" disabled>
                             </div>
-
                             <div class="col-12">
                                 <label for="username" class="form-label">Username</label>
                                 <div class="input-group has-validation">
-                                    <input type="text" class="form-control" id="username" placeholder="Username" required>
-                                    <div class="invalid-feedback">
-                                        Your username is required.
-                                    </div>
+                                    <input type="text" class="form-control" id="username" value="{{\Illuminate\Support\Facades\Auth::user()->username}}" disabled>
                                 </div>
                             </div>
-
                             <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                                <div class="invalid-feedback">
-                                    Please enter a valid email address.
-                                </div>
-                            </div>
+                                <input type="email" class="form-control" id="email" value="{{ \Illuminate\Support\Facades\Auth::user()->email }}" disabled>
 
+                            </div>
                             <div class="col-12">
                                 <label for="address" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="address" placeholder="+9989" required>
-                                <div class="invalid-feedback">
-                                    Please enter your Phone Number
-                                </div>
+                                <input type="text" class="form-control" id="address" value="{{ \Illuminate\Support\Facades\Auth::user()->phoneNumber }}" disabled>
                             </div>
-
                             <div class="col-sm-6">
                                 <label for="birthdate" class="form-label">Date of Birth </label>
-                                <input type="text" class="form-control" id="birthdate" placeholder="MM-DD-YYYY">
-                                <div class="invalid-feedback">
-                                    Valid date in valid form required.
-                                </div>
+                                <input type="text" class="form-control" id="birthdate" value="{{ \Illuminate\Support\Facades\Auth::user()->birthdate }}" disabled>
+
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="passport" class="form-label">Passport Number</label>
-                                <input type="text" class="form-control" id="passport" placeholder="AA1234567" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid passport number is required.
-                                </div>
-                            </div>
 
+                                <input type="text" class="form-control" id="passport" value="{{ \Illuminate\Support\Facades\Auth::user()->passport }}" required>
+
+                            </div>
                             <div class="col-sm-6">
                                 <label for="City" class="form-label">City</label>
-                                <input type="text" class="form-control" id="City" placeholder="CityName" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid city is required.
-                                </div>
+                                <input type="text" class="form-control" id="City" value="{{\Illuminate\Support\Facades\Auth::user()->city}}" required>
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="postal code" class="form-label">Postal Code</label>
-                                <input type="text" class="form-control" id="postal code" placeholder="100XX" value="" required>
-                                <div class="invalid-feedback">
-                                    Valid postal code is required.
-                                </div>
+
+                                <input type="text" class="form-control" id="postal code" value="{{\Illuminate\Support\Facades\Auth::user()->postalCode}}" required>
                             </div>
                         </div>
+
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Edit</button>
+
                     </form>
                 </div>
             </div>
@@ -146,7 +104,5 @@
 
     </div>
 @endsection
-
 @section("footer")
-
 @endsection

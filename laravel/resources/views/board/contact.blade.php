@@ -38,13 +38,16 @@
         </div>
 
         <div class="">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-left">
+            <form  method="post" role="form" class="php-email-form" data-aos="fade-left">
+
+              @include('partials_global.info')
+                @csrf
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="{{ \Illuminate\Support\Facades\Auth::user()->firstName }}" disabled>
+                        <input type="text" name="firstName" class="form-control" id="firstName" value="{{ \Illuminate\Support\Facades\Auth::user()->firstName }}" disabled>
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="{{ \Illuminate\Support\Facades\Auth::user()->email }}" disabled>
+                        <input type="email" class="form-control" name="email" id="email" value="{{ \Illuminate\Support\Facades\Auth::user()->email }}" disabled>
                     </div>
                 </div>
                 <div class="form-group mt-3">
@@ -58,7 +61,8 @@
                     <div class="error-message"></div>
                     <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <div class="text-center"><a href="#" class="btn button-sendMessage btn-lg btn-secondary button fw-bold border-white bg-black">Send Message</a></div>
+                <div class="text-center"><button  type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Send Message</button></div>
+
             </form>
         </div>
     </div>

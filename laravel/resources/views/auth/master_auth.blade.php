@@ -12,8 +12,9 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/auth.css" rel="stylesheet">
+    <link href="{{asset("bootstrap/css/bootstrap.min.css")}}" rel="stylesheet">
+
+    <link href="{{asset("css/auth.css")}}" rel="stylesheet">
 
 </head>
 <style>

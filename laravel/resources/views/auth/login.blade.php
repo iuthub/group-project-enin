@@ -28,13 +28,16 @@
     <img class="" src="{{ asset('img/login_logo.png') }}" alt="enin" style="display: inline-block; margin-bottom: 10px  ">
             <div class="form-floating " style="margin-bottom: 15px; width: 200px">
                 <input type="email" class="form-control" id="floatingInput" name="email" value="{{ old('email') }}" >
-                <label class="text-black-50" for="floatingInput">Email address</label>
+                <label for="floatingInput text-black-50">Email address</label>
+                @error('email')
+                <div class="alert-danger"> {{ $message }}</div>
+                @enderror
+
             </div>
             <div class="form-floating" style="margin-bottom: 15px; width: 200px">
                 <input type="password" class="form-control" id="floatingPassword" name="password" value="{{ old('password') }}" >
                 <label class="text-black-50" for="floatingPassword">Password</label>
             </div>
-{{--            <a href="{{ route('password.request') }}">Forgot password</a>--}}
             <button class="w-25 btn btn-lg btn-primary text-center" type="submit" style="margin-bottom: 15px; width: 200px">Login</button>
             <div>
                 <hr>
@@ -45,6 +48,7 @@
                 </p>
             </div>
             <button class="register btn btn-lg btn-secondary text-center"  type="button" style="" >
+                <a href="{{ route('password.request') }}">Forgot password</a> &nbsp; &nbsp;
                 <a href="{{ route('register') }}"style="color: white; text-decoration: none;">
                     Register
                 </a>

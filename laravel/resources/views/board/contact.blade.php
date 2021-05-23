@@ -2,10 +2,12 @@
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
-
+    <style>
+    </style>
     <div>
+
         <div class="section-title">
-            <h2>Contact</h2>
+            <h2 style="color: #22863a">Contact</h2>
             <p>We are glad to receive something from you</p>
         </div>
 
@@ -56,7 +58,7 @@
                     <div class="error-message"></div>
                     <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <div class="text-center"><a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-black">Send Message</a></div>
+                <div class="text-center"><a href="#" class="btn button-sendMessage btn-lg btn-secondary button fw-bold border-white bg-black">Send Message</a></div>
             </form>
         </div>
     </div>

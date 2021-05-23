@@ -15,7 +15,7 @@
                 {{-- The info about Announcements  --}}
                 <div class="col-md-5 col-lg-4 order-md-last">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-primary">Your Announcement</span>
+                        <span class="align-middle">Your Announcement</span>
                     </h4>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">

@@ -3,8 +3,10 @@
 @section('content')
     @include('board.partials_board.nav_bar_board')
 
-    <div class="Section Title">
-        <h2>Your profile</h2>
+    <div class="Section_Title green-text">
+        <h2 class="green-text">
+            <span class="text-center" style="color: #22863a">Your profile</span>
+        </h2>
         <p class="lead">I don't know there will be information</p>
     </div>
 
@@ -14,8 +16,8 @@
             <div class="row g-5">
                 {{-- The info about Announcements  --}}
                 <div class="col-md-8 col-lg-6 order-md-last">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-primary">Your Announcement</span>
+                    <h4 class=" justify-content-between align-items-center mb-3">
+                        <span class="text-center " style="color: #22863a">Your Announcement</span>
                     </h4>
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item bg-dark align-content-lg-start">
@@ -27,7 +29,7 @@
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <ol class="list-unstyled">
-                                        <li> <strong>Your comment: </strong> </li>
+                                        <li> <strong >Your comment: </strong> </li>
                                         <li> <strong>Category: </strong> </li>
                                         <li> <strong>Importance: </strong> </li>
                                     </ol>
@@ -59,59 +61,92 @@
                 {{-- The end of info about Announcements --}}
 
                 <div class="col-md-7 col-lg-6">
+                    <form class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <p>First name</p>
-                                <p>Tair</p>
+                                <label for="firstName" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="FirstName" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <p>Last Name</p>
-                                <p>Djanibekov</p>
+                                <label for="lastName" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="LastName" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
                             </div>
 
                             <div class="col-12">
-                                <p>Username</p>
-                                <p>enin</p>
+                                <label for="username" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                    <div class="invalid-feedback">
+                                        Your username is required.
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-12">
-                                <p>Email</p>
-                                <p>tair.djanibekov@gmail.com</p>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
                             </div>
 
                             <div class="col-12">
-                                <p>Phone number</p>
-                                <p>+998909988409</p>
+                                <label for="address" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="address" placeholder="+9989" required>
+                                <div class="invalid-feedback">
+                                    Please enter your Phone Number
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <p>Date of Birth</p>
-                                <p>19-04-2001</p>
+                                <label for="birthdate" class="form-label">Date of Birth </label>
+                                <input type="text" class="form-control" id="birthdate" placeholder="MM-DD-YYYY">
+                                <div class="invalid-feedback">
+                                    Valid date in valid form required.
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <p>Passport Number</p>
-                                <p>AB99998999</p>
+                                <label for="passport" class="form-label">Passport Number</label>
+                                <input type="text" class="form-control" id="passport" placeholder="AA1234567" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid passport number is required.
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <p>City</p>
-                                <p>Tashkent</p>
+                                <label for="City" class="form-label">City</label>
+                                <input type="text" class="form-control" id="City" placeholder="CityName" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid city is required.
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
-                                <p>Postal code</p>
-                                <p>99999</p>
+                                <label for="postal code" class="form-label">Postal Code</label>
+                                <input type="text" class="form-control" id="postal code" placeholder="100XX" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid postal code is required.
+                                </div>
                             </div>
                         </div>
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">Edit</button>
-
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                    </form>
                 </div>
             </div>
         </main>
 
     </div>
+@endsection
+
+@section("footer")
 
 @endsection

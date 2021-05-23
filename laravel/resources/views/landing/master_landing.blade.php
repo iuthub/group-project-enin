@@ -22,7 +22,10 @@
         @yield('content')
         @include('landing.partials_landing.footer')
     </div>
+
 </body>
+
+@yield("footer")
 </html>
 
 

@@ -11,11 +11,20 @@ body {
   background-color: #f5f5f5;
 }
 
+button{
+    margin-top: 10px;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
+}
+
+.w-100 {
+    color: #ffffff; !important;
+
 }
 
 .form-signin .checkbox {
@@ -41,9 +50,13 @@ body {
 .container {
     max-width: 960px;
 }
-
-
-
+.img-fluid .navbar-brand .navbar-expand-md{
+    position: relative;
+    height: 1080px;
+    width: 1920px;
+    left: 15px;
+    background-size: contain;
+}
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -57,3 +70,14 @@ body {
         font-size: 3.5rem;
     }
 }
+
+.topnav-right {
+
+}
+
+.delete-btn{
+    background-color: transparent;border:none; margin-bottom: 10px
+}
+
+
+

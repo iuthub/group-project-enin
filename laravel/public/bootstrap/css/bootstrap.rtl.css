@@ -7269,6 +7269,7 @@ textarea.form-control-lg {
 }
 
 .text-center {
+    color: #22863a;
   text-align: center !important;
 }
 
@@ -7304,7 +7305,7 @@ textarea.form-control-lg {
   white-space: nowrap !important;
 }
 .text-primary {
-  color: #0d6efd !important;
+  color: #22863a !important;
 }
 
 .text-secondary {

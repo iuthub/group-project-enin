@@ -2,10 +2,13 @@
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
+    <style>
 
+    </style>
     <div>
-        <div class="section-title">
-            <h2>Make announcement</h2>
+
+        <div class="section-title announce">
+            <h2 class="text-center" style="color: #22863a">Make announcement</h2>
             <p>Everybody would know</p>
 
             @if(session('info'))
@@ -60,19 +63,14 @@
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="content" rows="5" placeholder="Your announcement" value="{{ old('content') }}"></textarea>
                 </div>
-
-{{--                <div class="form-group mt-3">--}}
-{{--                    <input type="text" class="form-control" name="user_id" id="user_id" value="{{ \Illuminate\Support\Facades\Auth::user()->id }}" disabled>--}}
-{{--                </div>--}}
-
                 <div class="my-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
                     <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <input type="submit" value="Announce">
+                <button class="btn button-announce btn-lg btn-secondary fw-bold text-center border-white bg-black button " >Announce</button>
+                <input type="submit" value="Announce" style="display: none">
             </form>
         </div>
     </div>
-
 @endsection

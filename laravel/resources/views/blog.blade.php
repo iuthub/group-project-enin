@@ -15,15 +15,19 @@
 
     <style>
       .bd-placeholder-img {
+          font-family: 'Bebas Neue', cursive;
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
       }
-
+      *{
+          font-family: 'Bebas Neue', cursive;
+      }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
+            font-family: 'Bebas Neue', cursive;
           font-size: 3.5rem;
         }
       }
@@ -64,7 +68,7 @@
 
   <div class="row g-5">
     <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom" style="color: #22863a">
         From the Firehose
       </h3>
 

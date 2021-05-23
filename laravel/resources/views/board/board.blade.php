@@ -2,8 +2,19 @@
 
 @section('content')
     @include('board.partials_board.nav_bar_board')
+    @include('board.partials_board.additional_navbar')
+    <div class="btn-group">
 
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
     <main class="container mt-3">
+
         <div class="row mb-2">
             @foreach($announcements as $announcement)
                 <x-announcement :announcement="$announcement"></x-announcement>
@@ -55,6 +66,7 @@
 
             </div>
 
+
             <div class="col-md-4">
                 <div class="position-sticky" style="top: 2rem;">
                     <div class="p-4">
@@ -64,17 +76,9 @@
                             <li><a href="#">User 2</a></li>
                             <li><a href="#">January 2021</a></li>
                             <li><a href="#">December 2020</a></li>
-                            <li><a href="#">November 2020</a></li>
-                            <li><a href="#">October 2020</a></li>
-                            <li><a href="#">September 2020</a></li>
-                            <li><a href="#">August 2020</a></li>
-                            <li><a href="#">July 2020</a></li>
-                            <li><a href="#">June 2020</a></li>
-                            <li><a href="#">May 2020</a></li>
-                            <li><a href="#">April 2020</a></li>
+
                         </ol>
                     </div>
-
                     <div class="p-4">
                         <p class="lead">Moderators</p>
                         <ol class="list-unstyled">
@@ -86,7 +90,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
 @endsection

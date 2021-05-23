@@ -1,24 +1,55 @@
-@extends('auth.master_auth')
 
 @section('content')
+    @extends('board.master_board')
+
     <main class="form-signin">
-        <form action="{{ route('login') }}" method="post">
+        <style>
+            *{
+                font-family: 'Montserrat', sans-serif;
+            }
+.container{
+    align-content: center;
+    max-width: 600px;
+    border-inline-width: 10px;
+    -webkit-box-align: center;
+    border-radius: 15px;
+    align-items: center;
+    margin: 0 0 10px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+}
+        </style>
+        <form action="{{ route('login') }}" method="post" style="margin-left: 250px; margin-top:100px">
             @csrf
-            {{--        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">--}}
-
-            <h1 class="h3 mb-3 fw-normal">Please log in</h1>
-
-            <div class="form-floating">
+<div class="container-fluid container border" style="margin-bottom: 300px">
+            <h1 class="h3 mb-3 fw-normal text-center"></h1>
+    <img class="" src="{{ asset('img/login_logo.png') }}" alt="enin" style="display: inline-block; margin-bottom: 10px  ">
+            <div class="form-floating " style="margin-bottom: 15px; width: 200px">
                 <input type="email" class="form-control" id="floatingInput" name="email" value="{{ old('email') }}" >
-                <label for="floatingInput">Email address</label>
+                <label class="text-black-50" for="floatingInput">Email address</label>
             </div>
-            <div class="form-floating">
+            <div class="form-floating" style="margin-bottom: 15px; width: 200px">
                 <input type="password" class="form-control" id="floatingPassword" name="password" value="{{ old('password') }}" >
-                <label for="floatingPassword">Password</label>
+                <label class="text-black-50" for="floatingPassword">Password</label>
             </div>
 {{--            <a href="{{ route('password.request') }}">Forgot password</a>--}}
-            <a href="{{ route('register') }}">Register</a>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            <button class="w-25 btn btn-lg btn-primary text-center" type="submit" style="margin-bottom: 15px; width: 200px">Login</button>
+            <div>
+                <hr>
+            </div>
+            <div>
+                <p class="text-center " style="size: 10px; color:white ">
+                    If you don't have an account, please push the Register button
+                </p>
+            </div>
+            <button class="register btn btn-lg btn-secondary text-center"  type="button" style="" >
+                <a href="{{ route('register') }}"style="color: white; text-decoration: none;">
+                    Register
+                </a>
+            </button>
         </form>
+        </div>
     </main>
 @endsection

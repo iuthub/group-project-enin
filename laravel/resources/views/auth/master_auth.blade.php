@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,11 @@
     <link href="css/auth.css" rel="stylesheet">
 
 </head>
-
+<style>
+    *{
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
 <body class="bg-light">
     @yield('content')
 </body>

@@ -39,6 +39,15 @@
                             "href="{{ route('board.profile') }}"> {{ \Illuminate\Support\Facades\Auth::user()->firstName }} {{ \Illuminate\Support\Facades\Auth::user()->lastName }}
                         </a> &nbsp; &nbsp;
                     </li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->can('isModerator'))
+                    <li class="nav-item">
+                        <a class="nav-link nav-link px-2 link-dark
+                    @if(Route::current()->getName() == 'board.category')
+                            active
+                    @endif
+                            " href="{{ route('board.category') }}">New Category</a>
+                    </li>
+                    @endif
                 </ul>
                 <div class="col-md-3 text-end px-2 link-dark col-12 col-md-auto mb-2 justify-content-center mb-md-0 logout-btn" style="margin-bottom: 30px !important; margin-left: -240px">
                     <form action="{{ route('logout') }}" method="post">

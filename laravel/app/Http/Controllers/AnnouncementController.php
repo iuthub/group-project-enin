@@ -121,4 +121,15 @@ class   AnnouncementController extends Controller
         );
         return response()->redirectToRoute('board.announce')->with('info', 'Added!');
     }
+
+    public function createCategory(Request $request){
+        if($request->isMethod('post')){
+            $request->validate(
+              ['name'=>'required|unique:categories']
+            );
+            $this->repoCategory->create($request->all());
+            return back()->with('info', 'successfully added category');
+        }
+      return  view('createCategory');
+    }
 }

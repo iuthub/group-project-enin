@@ -33,10 +33,13 @@
                                 </h2>
                                 <div class="collapse" id="collapseButton2">
                                     <div class="accordion-body">
-                                        <ol class="list-unstyled">
-                                            @foreach($categories as $category)
-                                            <li> <strong><input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]">{{$category->name}}</strong> </li>
-                                            @endforeach
+                                        <ol class="list-unstyled ">
+                                            <div class="" style="float: left;text-align: left; ">
+                                                @foreach($categories as $category)
+                                                    <li> <strong><input class="form-check-input" type="checkbox" value="{{$category->id}}" name="categories[]">{{$category->name}}</strong> </li>
+                                                @endforeach
+                                            </div>
+
                                         </ol>
                                     </div>
                                 </div>
@@ -53,7 +56,7 @@
                                 </h2>
                                 <div class="collapse" id="collapseButton1">
                                     <div class="accordion-body">
-                                        <ol class="list-unstyled">
+                                        <ol class="list-unstyled" style="float: left;text-align: left; ">
                                             <li> <strong>
                                                 <input class="form-check-input" type="radio" name="importance" value="Very Important">
                                                 <label class="form-check-label" for="flexRadioDefault1">

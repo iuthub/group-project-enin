@@ -47,7 +47,7 @@ Route::group([
 //    })->name('board.board');
 
     Route::get('/board', [AnnouncementController::class, 'index'])->name('board.board');
-
+    Route::match(['get','post'],'/add_category', [AnnouncementController::class, 'createCategory'])->name('board.category');
 
     Route::get('/announce', [AnnouncementController::class, 'announcement'])->name('board.announce');
 

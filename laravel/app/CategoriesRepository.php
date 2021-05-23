@@ -16,4 +16,12 @@ class CategoriesRepository
     public function get($id){
         return Category::find($id);
     }
+
+    public function create($array){
+        $category = new Category(
+            $array
+        );
+
+        return  $category->save();
+    }
 }

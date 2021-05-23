@@ -46,9 +46,9 @@ class ContactUs extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Something')
-                    ->line('soemthif')
-                    ->action('Notification Action', url('/'))
+                    ->greeting('Good day!')
+                    ->line($this->subject)
+                    ->line($this->body)
                     ->line('Thank you for using our application!');
     }
 

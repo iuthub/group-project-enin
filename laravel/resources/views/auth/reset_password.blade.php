@@ -5,7 +5,6 @@
         <form action="{{ route('password.update') }}" method="post">
             @include('partials_global.info')
             @csrf
-            {{--        <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">--}}
 
             <h1 class="h3 mb-3 fw-normal">Update Password</h1>
             <input type="hidden" name="token" value="{{ $request->route('token') }}">

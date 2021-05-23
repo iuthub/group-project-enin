@@ -2,7 +2,6 @@
 
     @section('content')
     @include('board.partials_board.nav_bar_board')
-{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 <div class="Section Title">
     <h2> Profile {{ $foreignUser->firstName }} {{ $foreignUser->lastName }}</h2>
     <p class="lead">I don't know there will be information</p>

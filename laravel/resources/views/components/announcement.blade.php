@@ -1,6 +1,5 @@
 <div class="col-md-6" id="main_{{$announcement->id}}">
     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        {{--        @if(\Illuminate\Support\Facades\Auth::user()->checkModerator() != null)--}}
         @if(\Illuminate\Support\Facades\Auth::user()->can('isModerator'))
         <div class="">
             <div class="powers btn-moderator">

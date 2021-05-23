@@ -74,8 +74,6 @@ class   AnnouncementController extends Controller
         $foreignUser = $this->repoUser->get($id);
         $foreignUserAnnouncement = $foreignUser->announcements;
         $context = ['foreignUser' => $foreignUser, 'foreignUserAnnouncement' => $foreignUserAnnouncement];
-
-
         return view('board.profileForeign', $context);
     }
 

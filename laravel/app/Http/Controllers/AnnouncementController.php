@@ -130,6 +130,6 @@ class   AnnouncementController extends Controller
             $this->repoCategory->create($request->all());
             return back()->with('info', 'successfully added category');
         }
-      return  view('createCategory');
+      return  view('moderator.create_category');
     }
 }

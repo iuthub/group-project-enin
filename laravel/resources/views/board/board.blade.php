@@ -19,11 +19,9 @@
         </div>
         <div class="row g-5">
             <div class="col-md-8">
-                <h3 class="pb-4 mb-4 border-bottom">
-                    From the Firehose
-                </h3>
-                <h3>Example table</h3>
-                <p>And don't forget about tables in these posts:</p>
+
+                <h3>Statistics</h3>
+                <p>The following table displays number of announcements for particular category</p>
                 <table class="table">
                     <thead>
                     <tr>

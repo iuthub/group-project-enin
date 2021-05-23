@@ -223,7 +223,6 @@ tr{
     border-color: white;
     color: white;
     background-color: transparent;
-    pointer-events: none;
 }
 .powers {
     margin-top: 14px;

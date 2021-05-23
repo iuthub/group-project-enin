@@ -24,4 +24,5 @@ Route::group([
 ], function () {
     Route::get('/board/delete/{id}', [App\Http\Controllers\Api\AnnouncementController::class, 'delete'])->name('board.delete');
     Route::get('/board/reorder/{id}', [App\Http\Controllers\Api\AnnouncementController::class, 'reorder'])->name('board.reorder');
+    Route::get('/board/approve/{id}', [App\Http\Controllers\Api\AnnouncementController::class, 'approve'])->name('board.approve');
 });

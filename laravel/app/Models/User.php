@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\ContactUs;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,6 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return DB::table('moderators')->where("user_id", $this->id)->first();
     }
 
+    public static function getModerator(){
+       return User::select('users.*')->join('moderators','user_id','users.id')->first();
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

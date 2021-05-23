@@ -8,11 +8,18 @@ use App\Models\Announcement;
 use App\Models\Category;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementsRepository
 {
     public function getAll(){
-        return Announcement::orderBy('order', 'DESC')->get();
+       $user= Auth::user();
+        return Announcement::when(
+            $user ->cannot('isModerator'),
+            function ($query) use($user){
+               return $query->where("is_approved", true)->OrWhere("user_id", $user->id);
+            }
+        )->orderBy('order', 'DESC')->get();
     }
 
      public function get($id){
@@ -33,6 +40,9 @@ class AnnouncementsRepository
             'user_id'=>\Illuminate\Support\Facades\Auth::user()->id,
             'order' => Carbon::now(),
         ]);
+        if (Auth::user()->can('isModerator')){
+            $announcement->is_approved = true;
+        }
         $announcement->save();
 
          foreach ($categories as $category) {

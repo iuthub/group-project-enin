@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,9 +55,7 @@ Route::group([
 
     Route::get('/profile', [AnnouncementController::class, 'indexProfile'])->name('board.profile');
 
-    Route::get('/contactB', function () {
-        return view('board.contact');
-    })->name('board.contact');
+    Route::match(['get', 'post'],'/contactB',[ContactController::class, 'contactUs'])->name('board.contact');
 
 //    Route::get('/profile', function () {
 //        return view('board.profile');

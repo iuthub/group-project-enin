@@ -29,7 +29,7 @@
                             <div class="accordion-body">
                                 <ol class="list-unstyled">
                                     <li> <strong >Your comment: </strong> {{ $announcement->comment }} </li>
-                                    <li> <strong>Category: </strong> {{ $announcement->categories()->get()->map(function ($x){return $x->name;})->join(', ') }} </li>
+                                    <li> <strong>Category: </strong> {{ $announcement->categories->map(function ($x){return $x->name;})->join(', ') }} </li>
                                     <li> <strong>Importance: </strong> {{ $announcement->importance }} </li>
                                 </ol>
                                 {{$announcement->content}}

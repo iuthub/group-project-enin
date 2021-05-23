@@ -29,10 +29,7 @@ class   AnnouncementController extends Controller
         return view('board.board', ['announcements'=>$announcements, 'users'=>$users, 'categories'=>$categories]);
     }
 
-    public function boardDelete(int $id){
-        $isDeleted =  $this->repoAnnouncment->delete($id);
 
-    }
 
     public function announcement(){
         $categories = $this->repoCategory->getAll();
@@ -40,13 +37,7 @@ class   AnnouncementController extends Controller
     }
 
 
-    public function indexModerator(){
-        $announcements = $this->repoAnnouncment->getAll();
-        $users = $this->repoUser->getAll();
-        $categories = $this->repoCategory->getAll();
 
-        return view('moderator.moderator_page', ['announcements'=>$announcements, 'users'=>$users, 'categories'=>$categories]);
-    }
 
 
 
